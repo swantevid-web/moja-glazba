@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moja Online Playlist</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f9; color: #333; max-width: 500px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #444; }
+        audio { width: 100%; margin: 20px 0; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 10px; margin: 5px 0; background: #f9f9f9; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+        li:hover { background: #e2e8f0; }
+        li.active { background: #cbd5e1; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>🎵 Moja Playlist</h2>
+    <audio id="audio-player" controls></audio>
+    <ul id="playlist">
+        <!-- OVDJE DODAJETE SVOJE PJESME -->
+        <li data-src="pjesma1.mp3">1. Naziv prve pjesme</li>
+        <li data-src="pjesma2.mp3">2. Naziv druge pjesme</li>
+    </ul>
+
+    <script>
+        const audio = document.getElementById('audio-player');
+        const playlist = document.getElementById('playlist');
+        const tracks = playlist.getElementsByTagName('li');
+        let currentTrack = 0;
+
+        function loadTrack(index) {
+            for (let t of tracks) t.classList.remove('active');
+            tracks[index].classList.add('active');
+            audio.src = tracks[index].getAttribute('data-src');
+            audio.load();
+        }
+
+        function playTrack(index) {
+            currentTrack = index;
+            loadTrack(currentTrack);
+            audio.play();
+        }
+
+        for (let i = 0; i < tracks.length; i++) {
+            tracks[i].addEventListener('click', function() {
+                playTrack(i);
+            });
+        }
+
+        audio.addEventListener('ended', function() {
+            currentTrack++;
+            if (currentTrack < tracks.length) {
+                playTrack(currentTrack);
+            }
+        });
+
+        if (tracks.length > 0) {
+            loadTrack(0);
+        }
+    </script>
+
+</body>
+</html>
