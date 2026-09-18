@@ -20,8 +20,10 @@
     <audio id="audio-player" controls></audio>
     <ul id="playlist">
         <!-- OVDJE DODAJETE SVOJE PJESME -->
-        <li data-src="pjesma1.mp3">1. Naziv prve pjesme</li>
-        <li data-src="pjesma2.mp3">2. Naziv druge pjesme</li>
+        <li data-src="pjesma1.mp3">1. bezljubavi</li>
+        <li data-src="pjesma2.mp3">2. limunada</li>
+        <li data-src="pjesma2.mp3">2. neponovljivo</li>
+        <li data-src="pjesma2.mp3">2. sractumac2</li>
     </ul>
 
     <script>
